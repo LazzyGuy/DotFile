@@ -1,68 +1,82 @@
-" plug --- plugin manager  
+" plug --- plugin manager
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'scrooloose/nerdcommenter'
-Plug 'morhetz/gruvbox'
-Plug 'vim-airline/vim-airline'
-Plug 'vimwiki/vimwiki'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'jiangmiao/auto-pairs'
+Plug 'sheerun/vim-polyglot'
+Plug 'w0rp/ale'
+Plug 'tpope/vim-vinegar'
+Plug 'airblade/vim-gitgutter'
 call plug#end()
-" }}
+
+" ale Javascript
+let g:ale_fixers = {
+\   'javascript': ['prettier'],
+\   'css': ['prettier'],
+\}
+
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['eslint'],
+\}
+
+let g:ale_fix_on_save = 1
+
+" Neard tree toggle
+map <C-b> :NERDTreeToggle<CR>
+let g:NERDTreeMouseMode = 2
+let g:NERDTreeWinSize = 40
+let g:NERDTreeMinimalUI=1
+" start nead tree when opening a dir
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+
+" my sensible setting list
+set mouse=a
 let mapleader=' '
-" FZF file commands {{{
-let g:fzf_nvim_statusline = 0 " disable statusline overwriting
-
-nnoremap <silent> <leader><space> :Files<CR>
-nnoremap <silent> <leader>a :Buffers<CR>
-nnoremap <silent> <leader>A :Windows<CR>
-nnoremap <silent> <leader>; :BLines<CR>
-nnoremap <silent> <leader>o :BTags<CR>
-nnoremap <silent> <leader>O :Tags<CR>
-nnoremap <silent> <leader>? :History<CR>
-nnoremap <silent> <leader>/ :execute 'Ag ' . input('Ag/')<CR>
-nnoremap <silent> <leader>. :AgIn 
-" }}}
-
-
-" autocomplete engien {{
-let g:deoplete#enable_at_startup = 1
-" }}
-" settings for vim wiki to work properly {{
 set nocompatible
 filetype plugin on
 syntax on
-set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab autoindent smartindent cindent
-" }}
-
-" theme {{
-let g:gruvbox_italic=1
-set background=dark
-colorscheme gruvbox
-" }}
-
-let g:airline_powerline_fonts = "1"
-" InsurajdentLine {{
-let g:indentLine_char = '.'
-let g:indentLine_first_char = '.'
-le g:indentLine_showFirstIndentLevel = 1
-let g:indentLine_setColors = 0
-" }}
-
-
+set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab autoindent smartindent
 set number
-" split navigations {{
 
-" }}
+" color related settings
+set background=dark
+set cursorline
+colorscheme peaksea
+
+" Simplify using tabs
+nnoremap <M-h> gT
+nnoremap <M-l> gt
+nnoremap T :tabnew<cr>
 
 
-" editing 
+"find the next match as we type the search
+set incsearch
+set ignorecase
+set smartcase
+"wrap
+set wrap
+set linebreak
+
+set scrolloff=3
+set sidescrolloff=7
+set sidescroll=1
+
+" editing
 nnoremap <LEADER>o o<Esc>
 nnoremap <LEADER>O O<Esc>
 nnoremap <LEADER>c 0y$
 
-" Remaping movements in split screen {{
+" Open new splits to right and bottom
+set splitbelow
+set splitright
+
+" moving to end of whatever
+nnoremap <LEADER>i ^i <Esc>vk$d
+
+" Remaping movements in split screen
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
@@ -75,49 +89,35 @@ nnoremap <LEADER>s :w<CR>
 nnoremap <LEADER>e :q<CR>
 nnoremap <LEADER>se :x<CR>
 
-
-" Impo remappings
-
+" normal mode switch
 inoremap jj <Esc>
+" load vimrc
 map <LEADER>ss :so %<CR>
 
-set splitbelow
-set splitright
-
-" code folding 
-" &
-" Enable folding with the spacebar {{
-nnoremap <space>f za
+" code folding
+nnoremap <LEADER><LEADER> za
 set foldmethod=indent
 set foldlevel=99
-" }}
 
-" Disabling arrows key support {{
+" Disabling arrows key support an using them for window resizing
 map <Up> <C-W>-
 map <Down> <C-W>+
 map <Left> <c-w><
 map <Right> <c-w>>
-" }}
 
-" italtc Support {{
+" italtc Support
 set t_ZH=^[[3m
 set t_ZR=^[[23m
-" }}
-
-
-" transparacy {{
-hi Normal guibg=NONE ctermbg=NONE
-" }}
-
-" Enabling mouse
-set mouse=a
 
 " highlight tabs and trailing spaces
-set listchars=tab:>-,trail:-
 set list
+set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 
-" highlight the current line
-set cursorline
+" Bash style autocmp
+set wildmode=longest,list,full
+set wildmenu
 
-" completion
-set completefunc=syntaxcomplete#Complete
+" Git gutter setting
+" dec time
+set updatetime=100
+nnoremap git :GitGutterToggle<CR>

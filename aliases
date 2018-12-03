@@ -1,6 +1,7 @@
 # alias file 
 
-alias workspace="cd /mnt/workspace"
+
+alias w="cd /mnt/workspace"
 alias cls="clear"
 alias todo="cat ~/.todorc"
 alias pact="pipenv shell"
@@ -10,6 +11,7 @@ export PATH="$PATH:/home/suraj/.local/bin"
 
 alias v='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 alias vim='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
+alias vimrc="vim ~/DotFile/vimrc"
 
 export TERM=xterm-256color 
 
@@ -24,3 +26,5 @@ alias note="vim ~/vimwiki/index.wiki"
 alias td="taskbook"
 alias todo="taskbook"
 alias tb="taskbook"
+alias spring="/mnt/workspace/temp_ak47/Softwares/sts-4.0.1.RELEASE/SpringToolSuite4"
+alias studio="/home/suraj/android-studio/bin/studio.sh"
