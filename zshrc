@@ -33,7 +33,7 @@ CASE_SENSITIVE="true"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
@@ -110,7 +110,6 @@ export NVM_DIR="$HOME/.nvm"
 
 
 # Paths 
-export PATH=~/.nvim/squashfs-root/usr/bin:$PATH
 export PATH=~/.JAVA/jdk1.8.0_191/bin:$PATH
 export PATH=~/.JAVA/apache-maven-3.6.0/bin:$PATH
 export PATH=~/__lazzyscript__/bin:$PATH
@@ -123,3 +122,9 @@ chpwd() ls
 
 # vi mode for zsh
 bindkey -v
+# Gnome term title
+echo -e "\033];🤖\007"
+
+
+# added by travis gem
+[ -f /home/suraj/.travis/travis.sh ] && source /home/suraj/.travis/travis.sh

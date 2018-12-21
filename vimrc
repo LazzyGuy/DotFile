@@ -8,17 +8,15 @@ Plug 'sheerun/vim-polyglot'
 Plug 'w0rp/ale'
 Plug 'tpope/vim-vinegar'
 Plug 'airblade/vim-gitgutter'
+Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript'
+Plug 'ayu-theme/ayu-vim'
 call plug#end()
 
 " ale Javascript
 let g:ale_fixers = {
 \   'javascript': ['prettier'],
 \   'css': ['prettier'],
-\}
-
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'javascript': ['eslint'],
 \}
 
 let g:ale_fix_on_save = 1
@@ -43,8 +41,11 @@ set number
 
 " color related settings
 set background=dark
-set cursorline
-colorscheme peaksea
+set termguicolors     " enable true colors support
+"let ayucolor="light"  " for light version of theme
+"let ayucolor="mirage" " for mirage version of theme
+let ayucolor="dark"   " for dark version of theme
+colorscheme ayu
 
 " Simplify using tabs
 nnoremap <M-h> gT
@@ -104,7 +105,13 @@ map <Up> <C-W>-
 map <Down> <C-W>+
 map <Left> <c-w><
 map <Right> <c-w>>
-
+" Moving fast
+nmap J 5j
+nmap K 5k
+vmap J 5j
+vmap K 5k
+xmap J 5j
+xmap K 5k
 " italtc Support
 set t_ZH=^[[3m
 set t_ZR=^[[23m

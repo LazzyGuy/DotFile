@@ -6,12 +6,8 @@ alias cls="clear"
 alias todo="cat ~/.todorc"
 alias pact="pipenv shell"
 alias p3="python3"
+alias pro="cd /mnt/workspace/projects/"
 export PATH="$PATH:/home/suraj/.local/bin"
-
-
-alias v='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
-alias vim='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
-alias vimrc="vim ~/DotFile/vimrc"
 
 export TERM=xterm-256color 
 
@@ -22,7 +18,6 @@ stty -ixon
 alias rm="rm -i"
 # my notebook alias
 
-alias note="vim ~/vimwiki/index.wiki"
 alias td="taskbook"
 alias todo="taskbook"
 alias tb="taskbook"
