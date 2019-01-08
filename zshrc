@@ -2,13 +2,13 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH="/home/suraj/.oh-my-zsh"
+export ZSH="/home/suraj/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="cloud"
+ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -124,7 +124,17 @@ chpwd() ls
 bindkey -v
 # Gnome term title
 echo -e "\033];🤖\007"
-
+# setting term
+export TERM="xterm-256color"
 
 # added by travis gem
 [ -f /home/suraj/.travis/travis.sh ] && source /home/suraj/.travis/travis.sh
+
+
+# Daily message
+echo '1. Understand\n2. Plan\n3. Solve\n4. Tweek'
+
+
+# tabtab source for electron-forge package
+# uninstall by removing these lines or running `tabtab uninstall electron-forge`
+[[ -f /mnt/workspace/acroknacks-workfiles/duvall/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /mnt/workspace/acroknacks-workfiles/duvall/node_modules/tabtab/.completions/electron-forge.zsh

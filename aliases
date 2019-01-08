@@ -1,6 +1,4 @@
 # alias file 
-
-
 alias w="cd /mnt/workspace"
 alias cls="clear"
 alias todo="cat ~/.todorc"

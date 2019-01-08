@@ -4,28 +4,17 @@ Plug 'tpope/vim-sensible'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'jiangmiao/auto-pairs'
-Plug 'sheerun/vim-polyglot'
-Plug 'w0rp/ale'
-Plug 'tpope/vim-vinegar'
-Plug 'airblade/vim-gitgutter'
-Plug 'mxw/vim-jsx'
-Plug 'pangloss/vim-javascript'
 Plug 'ayu-theme/ayu-vim'
 call plug#end()
 
-" ale Javascript
-let g:ale_fixers = {
-\   'javascript': ['prettier'],
-\   'css': ['prettier'],
-\}
-
-let g:ale_fix_on_save = 1
 
 " Neard tree toggle
 map <C-b> :NERDTreeToggle<CR>
 let g:NERDTreeMouseMode = 2
-let g:NERDTreeWinSize = 40
+let g:NERDTreeWinSize = 20
 let g:NERDTreeMinimalUI=1
+" Open file in new tab
+"let NERDTreeMapOpenInTab='T'
 " start nead tree when opening a dir
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
@@ -42,16 +31,15 @@ set number
 " color related settings
 set background=dark
 set termguicolors     " enable true colors support
-"let ayucolor="light"  " for light version of theme
-"let ayucolor="mirage" " for mirage version of theme
-let ayucolor="dark"   " for dark version of theme
-colorscheme ayu
+colorscheme industry
+set t_ZH=^[[3m
+set t_ZR=^[[23m
+highlight Comment cterm=italic
 
 " Simplify using tabs
 nnoremap <M-h> gT
 nnoremap <M-l> gt
 nnoremap T :tabnew<cr>
-
 
 "find the next match as we type the search
 set incsearch
@@ -92,6 +80,7 @@ nnoremap <LEADER>se :x<CR>
 
 " normal mode switch
 inoremap jj <Esc>
+inoremap <C-W>= <Esc>ggVG=i
 " load vimrc
 map <LEADER>ss :so %<CR>
 
@@ -116,9 +105,8 @@ xmap K 5k
 set t_ZH=^[[3m
 set t_ZR=^[[23m
 
-" highlight tabs and trailing spaces
-set list
-set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
+"Recording shortcut
+noremap Q @q
 
 " Bash style autocmp
 set wildmode=longest,list,full
@@ -128,3 +116,18 @@ set wildmenu
 " dec time
 set updatetime=100
 nnoremap git :GitGutterToggle<CR>
+
+" Indentaion ayu-vim
+" IndentLine {{
+let g:indentLine_char = ''
+let g:indentLine_first_char = ''
+let g:indentLine_showFirstIndentLevel = 1
+let g:indentLine_setColors = 0
+" }}
+"
+"
+
+"Just for qtCreator fakeVim
+nnoremap <C-W>s :qtsave<CR>
+nnoremap <C-W>e :qtrun<CR>
+
