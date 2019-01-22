@@ -26,12 +26,13 @@ set nocompatible
 filetype plugin on
 syntax on
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab autoindent smartindent
-set number
+set number relativenumber
 
 " color related settings
 set background=dark
 set termguicolors     " enable true colors support
-colorscheme industry
+colorscheme solarized8
+
 set t_ZH=^[[3m
 set t_ZR=^[[23m
 highlight Comment cterm=italic
