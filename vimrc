@@ -82,7 +82,7 @@ nnoremap <LEADER>se :x<CR>
 " normal mode switch
 inoremap jj <Esc>
 inoremap <C-W>= <Esc>ggVG=i
-" load vimrc
+" weload vimrc
 map <LEADER>ss :so %<CR>
 
 " code folding
