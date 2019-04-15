@@ -7,6 +7,9 @@ alias p3="python3"
 alias pro="cd /mnt/workspace/projects/"
 export PATH="$PATH:/home/suraj/.local/bin"
 
+alias nvim="/home/suraj/ide/nvim.appimage"
+alias v="nvim"
+alias vim="nvim"
 alias tmux="env TERM=xterm-256color tmux"
 alias tmux='tmux -u'
 

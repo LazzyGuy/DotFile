@@ -28,15 +28,6 @@ syntax on
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab autoindent smartindent
 set number relativenumber
 
-" color related settings
-set background=dark
-set termguicolors     " enable true colors support
-colorscheme solarized8
-
-set t_ZH=^[[3m
-set t_ZR=^[[23m
-highlight Comment cterm=italic
-
 " Simplify using tabs
 nnoremap <M-h> gT
 nnoremap <M-l> gt
@@ -102,9 +93,6 @@ vmap J 5j
 vmap K 5k
 xmap J 5j
 xmap K 5k
-" italtc Support
-set t_ZH=^[[3m
-set t_ZR=^[[23m
 
 "Recording shortcut
 noremap Q @q
