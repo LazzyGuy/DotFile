@@ -3,7 +3,7 @@
 " ----------------------------
 call plug#begin('~/.local/share/nvim/plugged')
 
-" Tree 
+" Tree
 " ====
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
@@ -31,9 +31,17 @@ Plug 'w0rp/ale'
 " =======================
 Plug 'rust-lang/rust.vim'
 
+" TypeScript Lang & sh
+" =======================
+Plug 'leafgarland/typescript-vim'
+
 " Colors
 " ======
 Plug 'morhetz/gruvbox'
+
+" Air Line
+" ======
+Plug 'vim-airline/vim-airline'
 
 call plug#end()
 
@@ -61,6 +69,8 @@ hi Normal guibg=NONE ctermbg=NONE
 if &t_Co == 8 && $TERM !~# '^linux\|^Eterm'
   set t_Co=16
 endif
+let g:airline_theme = 'gruvbox'
+let g:airline_powerline_fonts = 1
 
 
 " Tern
@@ -178,7 +188,7 @@ set backspace=indent,eol,start
 set complete-=i
 set smarttab
 set number
-set cursorline
+"set cursorline
 set listchars=tab:>-,trail:-
 set list
 set mouse=a
@@ -234,3 +244,16 @@ set autoread
 " ------------
 " Defalut Configs 
 " ------------
+
+" move to the last edit line in the file
+function! ResCur()
+  if line("'\"") <= line("$")
+    normal! g`"
+    return 1
+  endif
+endfunction
+
+augroup resCur
+  autocmd!
+  autocmd BufWinEnter * call ResCur()
+augroup END
